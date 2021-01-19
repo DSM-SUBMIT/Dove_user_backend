@@ -1,25 +1,30 @@
 package com.dove.Dove_user_backend.payload.request;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-
-import java.time.LocalDate;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostRequest {
 
+    @NotNull
     private String clubName;
 
+    @NotNull
     private String title;
 
+    @NotNull
     private String writer;
 
     private String description;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date;
+    @NotNull
+    private String date;
 
     private String link;
 

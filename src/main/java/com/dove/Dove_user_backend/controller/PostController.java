@@ -6,6 +6,8 @@ import com.dove.Dove_user_backend.payload.response.PostResponse;
 import com.dove.Dove_user_backend.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -25,8 +27,9 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public void post(PostRequest postRequest) {
-
+    @ResponseStatus(HttpStatus.CREATED)
+    public void post(@RequestBody @Validated PostRequest postRequest) {
+        postService.post(postRequest);
     }
 
 }

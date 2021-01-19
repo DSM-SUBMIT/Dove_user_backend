@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public PostResponse viewList(Pageable page) {
-        Page<Post> postPage = postRepository.findAllOrderByDateDesc(page);
+        Page<Post> postPage = postRepository.findAllByOrderByDateDesc(page);
         List<PostContentResponse> postResponses = new ArrayList<>();
 
         for(Post post : postPage) {
@@ -67,7 +68,7 @@ public class PostServiceImpl implements PostService{
                         .title(postRequest.getTitle())
                         .writer(postRequest.getWriter())
                         .description(postRequest.getDescription())
-                        .date(postRequest.getDate())
+                        .date(LocalDate.parse(postRequest.getDate()))
                         .link(postRequest.getLink())
                         .build()
         );

@@ -1,6 +1,7 @@
 package com.dove.Dove_user_backend.entity.post;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class Post {
     private String description;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "YYYY-MM-DD")
     private LocalDate date;
 
     private String link;
