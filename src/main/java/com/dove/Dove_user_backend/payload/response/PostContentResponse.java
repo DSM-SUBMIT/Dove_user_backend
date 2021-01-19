@@ -1,4 +1,4 @@
-package com.dove.Dove_user_backend.payload.request;
+package com.dove.Dove_user_backend.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 @Builder
-public class PostRequest {
+public class PostContentResponse {
 
     private String clubName;
 
