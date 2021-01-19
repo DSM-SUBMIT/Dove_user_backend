@@ -1,19 +1,23 @@
 package com.dove.Dove_user_backend.payload.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.List;
+import java.time.LocalDate;
+
 
 @Getter
-public class PostResponse extends PageResponse {
+@Builder
+public class PostResponse {
 
-    private List<PostContentResponse> postResponses;
+    private String clubName;
 
-    @Builder
-    public PostResponse(int totalElements, int totalPages, List<PostContentResponse> postResponses) {
-        super(totalElements, totalPages);
-        this.postResponses = postResponses;
-    }
+    private String title;
+
+    private String writer;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
 
 }

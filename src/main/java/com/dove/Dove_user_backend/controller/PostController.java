@@ -2,7 +2,7 @@ package com.dove.Dove_user_backend.controller;
 
 import com.dove.Dove_user_backend.payload.request.PostRequest;
 import com.dove.Dove_user_backend.payload.response.PostContentResponse;
-import com.dove.Dove_user_backend.payload.response.PostResponse;
+import com.dove.Dove_user_backend.payload.response.PostListResponse;
 import com.dove.Dove_user_backend.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +17,7 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping
-    public PostResponse viewList(Pageable page) {
+    public PostListResponse viewList(Pageable page) {
         return postService.viewList(page);
     }
 

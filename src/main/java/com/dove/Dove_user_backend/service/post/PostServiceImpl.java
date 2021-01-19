@@ -5,6 +5,7 @@ import com.dove.Dove_user_backend.entity.post.PostRepository;
 import com.dove.Dove_user_backend.exception.PostNotFoundException;
 import com.dove.Dove_user_backend.payload.request.PostRequest;
 import com.dove.Dove_user_backend.payload.response.PostContentResponse;
+import com.dove.Dove_user_backend.payload.response.PostListResponse;
 import com.dove.Dove_user_backend.payload.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,13 +23,13 @@ public class PostServiceImpl implements PostService{
     private final PostRepository postRepository;
 
     @Override
-    public PostResponse viewList(Pageable page) {
+    public PostListResponse viewList(Pageable page) {
         Page<Post> postPage = postRepository.findAllByOrderByDateDesc(page);
-        List<PostContentResponse> postResponses = new ArrayList<>();
+        List<PostResponse> postResponses = new ArrayList<>();
 
         for(Post post : postPage) {
             postResponses.add(
-                    PostContentResponse.builder()
+                    PostResponse.builder()
                             .clubName(post.getClubName())
                             .title(post.getTitle())
                             .writer(post.getWriter())
@@ -37,7 +38,7 @@ public class PostServiceImpl implements PostService{
             );
         }
 
-        return PostResponse.builder()
+        return PostListResponse.builder()
                 .totalElements((int)postPage.getTotalElements())
                 .totalPages(postPage.getTotalPages())
                 .postResponses(postResponses)

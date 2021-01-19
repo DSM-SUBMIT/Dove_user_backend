@@ -74,7 +74,7 @@ class PostControllerTest {
         postPost(11);
 
         mvc.perform(get("/post/"+id))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk()).andDo(print());
     }
 
     @Test
