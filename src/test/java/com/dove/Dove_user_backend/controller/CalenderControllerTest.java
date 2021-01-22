@@ -64,20 +64,20 @@ class CalenderControllerTest {
         addEvent("2020-03-15");
         addEvent("2020-02-11");
 
-
-
         mvc.perform(get("/calender")
                 .param("year","2020")
-                .param("month","03"))
+                .param("month","02"))
                 .andExpect(status().isOk()).andDo(print());
     }
 
     private void addEvent(String date) {
-        Event.builder()
-                .host("김해교")
-                .event("김해교가 알려주는 디자인 시간")
-                .eventDate(LocalDate.parse(date))
-                .build();
+        eventRepository.save(
+                Event.builder()
+                        .host("김해교")
+                        .event("김해교가 알려주는 디자인 시간")
+                        .eventDate(LocalDate.parse(date))
+                        .build()
+        );
     }
 
 }

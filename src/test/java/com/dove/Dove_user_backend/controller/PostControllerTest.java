@@ -78,7 +78,6 @@ class PostControllerTest {
 
     @Test
     public void addPost() throws Exception {
-
         PostRequest request = PostRequest.builder()
                 .clubName("submit")
                 .title("event")
