@@ -20,7 +20,6 @@ public class CalenderServiceImpl implements CalenderService {
 
     @Override
     public EventListResponse getCalender(Integer year, Integer month) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate start = LocalDate.of(year, month, 1);
         LocalDate end = LocalDate.of(year, month, start.lengthOfMonth());
 
