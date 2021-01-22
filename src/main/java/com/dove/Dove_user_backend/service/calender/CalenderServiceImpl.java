@@ -44,7 +44,7 @@ public class CalenderServiceImpl implements CalenderService {
         LocalDate start = LocalDate.parse(startDay, formatter);
         LocalDate end = LocalDate.parse(endDay, formatter);
 
-        List<Event> events = eventRepository.findAllByYearAndMonth(start, end);
+        List<Event> events = eventRepository.findAllByEventDateBetween(start, end);
         List<EventResponse> eventResponses = new ArrayList<>();
 
         for(Event event : events) {
