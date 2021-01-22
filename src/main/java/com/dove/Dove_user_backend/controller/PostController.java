@@ -1,8 +1,8 @@
 package com.dove.Dove_user_backend.controller;
 
 import com.dove.Dove_user_backend.payload.request.PostRequest;
-import com.dove.Dove_user_backend.payload.response.PostContentResponse;
 import com.dove.Dove_user_backend.payload.response.PostListResponse;
+import com.dove.Dove_user_backend.payload.response.PostResponse;
 import com.dove.Dove_user_backend.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +22,7 @@ public class PostController {
     }
 
     @GetMapping("/post/{id}")
-    public PostContentResponse viewPost(@PathVariable Integer id) {
+    public PostResponse viewPost(@PathVariable Integer id) {
         return postService.viewPost(id);
     }
 

@@ -17,7 +17,11 @@ public class PostResponse {
 
     private String writer;
 
+    private String description;
+
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+
+    private String link;
 
 }

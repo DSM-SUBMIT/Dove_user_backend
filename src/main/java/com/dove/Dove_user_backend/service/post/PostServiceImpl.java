@@ -4,7 +4,6 @@ import com.dove.Dove_user_backend.entity.post.Post;
 import com.dove.Dove_user_backend.entity.post.PostRepository;
 import com.dove.Dove_user_backend.exception.PostNotFoundException;
 import com.dove.Dove_user_backend.payload.request.PostRequest;
-import com.dove.Dove_user_backend.payload.response.PostContentResponse;
 import com.dove.Dove_user_backend.payload.response.PostListResponse;
 import com.dove.Dove_user_backend.payload.response.PostResponse;
 import lombok.RequiredArgsConstructor;
@@ -46,12 +45,12 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public PostContentResponse viewPost(Integer id) {
+    public PostResponse viewPost(Integer id) {
 
         Post post = postRepository.findById(id)
                 .orElseThrow(PostNotFoundException::new);
 
-        return PostContentResponse.builder()
+        return PostResponse.builder()
                 .clubName(post.getClubName())
                 .title(post.getTitle())
                 .writer(post.getWriter())
