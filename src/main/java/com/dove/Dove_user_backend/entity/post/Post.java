@@ -34,8 +34,8 @@ public class Post {
     private String description;
 
     @Column(nullable = false)
-    @JsonFormat(pattern = "YYYY-MM-DD")
-    private LocalDate date;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate eventDate;
 
     private String link;
 

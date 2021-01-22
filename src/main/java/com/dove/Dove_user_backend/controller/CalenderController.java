@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
-@RequestMapping("calender")
+@RequestMapping("/calender")
 @RestController
 public class CalenderController {
 
     private final CalenderService calenderService;
 
     @GetMapping
-    public EventListResponse getCalender(@RequestParam int year,
-                                         @RequestParam int month) {
+    public EventListResponse getCalender(@RequestParam String year,
+                                         @RequestParam String month) {
         return calenderService.getCalender(year,month);
     }
 

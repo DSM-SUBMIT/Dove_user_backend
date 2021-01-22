@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Integer> {
-    Page<Post> findAllByOrderByDateDesc(Pageable page);
+    Page<Post> findAllByOrderByEventDateDesc(Pageable page);
 }

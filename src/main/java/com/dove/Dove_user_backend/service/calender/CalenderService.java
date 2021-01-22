@@ -3,5 +3,5 @@ package com.dove.Dove_user_backend.service.calender;
 import com.dove.Dove_user_backend.payload.response.EventListResponse;
 
 public interface CalenderService {
-    EventListResponse getCalender(int year, int month);
+    EventListResponse getCalender(String year, String month);
 }

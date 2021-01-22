@@ -102,7 +102,7 @@ class PostControllerTest {
                         .title("event")
                         .description("event description")
                         .writer("이승윤")
-                        .date(LocalDate.parse("2019-01-19"))
+                        .eventDate(LocalDate.parse("2019-01-19"))
                         .link("http://github.com/syxxn")
                         .build()
         ).getId();

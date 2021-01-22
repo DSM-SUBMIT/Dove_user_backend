@@ -24,7 +24,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public PostListResponse viewList(Pageable page) {
-        Page<Post> postPage = postRepository.findAllByOrderByDateDesc(page);
+        Page<Post> postPage = postRepository.findAllByOrderByEventDateDesc(page);
         List<PostResponse> postResponses = new ArrayList<>();
 
         for(Post post : postPage) {
@@ -33,7 +33,7 @@ public class PostServiceImpl implements PostService{
                             .clubName(post.getClubName())
                             .title(post.getTitle())
                             .writer(post.getWriter())
-                            .date(post.getDate())
+                            .date(post.getEventDate())
                             .build()
             );
         }
@@ -56,7 +56,7 @@ public class PostServiceImpl implements PostService{
                 .title(post.getTitle())
                 .writer(post.getWriter())
                 .description(post.getDescription())
-                .date(post.getDate())
+                .date(post.getEventDate())
                 .link(post.getLink())
                 .build();
     }
@@ -69,7 +69,7 @@ public class PostServiceImpl implements PostService{
                         .title(postRequest.getTitle())
                         .writer(postRequest.getWriter())
                         .description(postRequest.getDescription())
-                        .date(LocalDate.parse(postRequest.getDate()))
+                        .eventDate(LocalDate.parse(postRequest.getDate()))
                         .link(postRequest.getLink())
                         .build()
         );
