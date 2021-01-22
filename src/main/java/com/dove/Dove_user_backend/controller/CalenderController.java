@@ -14,8 +14,8 @@ public class CalenderController {
     private final CalenderService calenderService;
 
     @GetMapping
-    public EventListResponse getCalender(@RequestParam String year,
-                                         @RequestParam String month) {
+    public EventListResponse getCalender(@RequestParam Integer year,
+                                         @RequestParam Integer month) {
         return calenderService.getCalender(year,month);
     }
 
