@@ -30,7 +30,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @ActiveProfiles("test")
 class PostControllerTest {
 
-
     @Autowired
     private WebApplicationContext context;
 
