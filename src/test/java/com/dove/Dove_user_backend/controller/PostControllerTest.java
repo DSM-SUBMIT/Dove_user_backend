@@ -64,7 +64,7 @@ class PostControllerTest {
         mvc.perform(get("/")
                 .param("size","6")
                 .param("page","0"))
-                .andExpect(status().isOk()).andDo(print());
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -73,7 +73,7 @@ class PostControllerTest {
         postPost(11);
 
         mvc.perform(get("/post/"+id))
-                .andExpect(status().isOk()).andDo(print());
+                .andExpect(status().isOk());
     }
 
     @Test

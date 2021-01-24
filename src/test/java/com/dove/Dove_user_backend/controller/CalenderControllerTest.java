@@ -67,7 +67,7 @@ class CalenderControllerTest {
         mvc.perform(get("/calender")
                 .param("year","2020")
                 .param("month","02"))
-                .andExpect(status().isOk()).andDo(print());
+                .andExpect(status().isOk());
     }
 
     private void addEvent(String date) {
