@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -22,8 +23,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "club_name", nullable = false, length = 45)
-    private String clubName;
+    @Column(name = "host", nullable = false, length = 45)
+    private String host;
 
     @Column(nullable = false, length = 60)
     private String title;
@@ -38,5 +39,9 @@ public class Post {
     private LocalDate eventDate;
 
     private String link;
+
+    @Column(nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime createAt;
 
 }

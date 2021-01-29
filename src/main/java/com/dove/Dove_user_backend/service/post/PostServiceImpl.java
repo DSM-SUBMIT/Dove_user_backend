@@ -4,6 +4,7 @@ import com.dove.Dove_user_backend.entity.post.Post;
 import com.dove.Dove_user_backend.entity.post.PostRepository;
 import com.dove.Dove_user_backend.exception.PostNotFoundException;
 import com.dove.Dove_user_backend.payload.request.PostRequest;
+import com.dove.Dove_user_backend.payload.response.PostListContentResponse;
 import com.dove.Dove_user_backend.payload.response.PostListResponse;
 import com.dove.Dove_user_backend.payload.response.PostResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +26,14 @@ public class PostServiceImpl implements PostService{
     @Override
     public PostListResponse viewList(Pageable page) {
         Page<Post> postPage = postRepository.findAllByOrderByEventDateDesc(page);
-        List<PostResponse> postResponses = new ArrayList<>();
+        List<PostListContentResponse> postResponses = new ArrayList<>();
 
         for(Post post : postPage) {
             postResponses.add(
-                    PostResponse.builder()
-                            .clubName(post.getClubName())
+                    PostListContentResponse.builder()
+                            .clubName(post.getHost())
                             .title(post.getTitle())
-                            .writer(post.getWriter())
-                            .date(post.getEventDate())
+                            .eventDate(post.getEventDate())
                             .build()
             );
         }
@@ -51,12 +52,13 @@ public class PostServiceImpl implements PostService{
                 .orElseThrow(PostNotFoundException::new);
 
         return PostResponse.builder()
-                .clubName(post.getClubName())
+                .clubName(post.getHost())
                 .title(post.getTitle())
                 .writer(post.getWriter())
                 .description(post.getDescription())
-                .date(post.getEventDate())
+                .eventDate(post.getEventDate())
                 .link(post.getLink())
+                .createdAt(post.getCreateAt())
                 .build();
     }
 
@@ -64,12 +66,13 @@ public class PostServiceImpl implements PostService{
     public void post(PostRequest postRequest) {
         postRepository.save(
                 Post.builder()
-                        .clubName(postRequest.getClubName())
+                        .host(postRequest.getHost())
                         .title(postRequest.getTitle())
                         .writer(postRequest.getWriter())
                         .description(postRequest.getDescription())
-                        .eventDate(LocalDate.parse(postRequest.getDate()))
+                        .eventDate(LocalDate.parse(postRequest.getEventDate()))
                         .link(postRequest.getLink())
+                        .createAt(LocalDateTime.now())
                         .build()
         );
     }

@@ -8,10 +8,10 @@ import java.util.List;
 @Getter
 public class PostListResponse extends PageResponse {
 
-    private List<PostResponse> postResponses;
+    private List<PostListContentResponse> postResponses;
 
     @Builder
-    public PostListResponse(int totalElements, int totalPages, List<PostResponse> postResponses) {
+    public PostListResponse(int totalElements, int totalPages, List<PostListContentResponse> postResponses) {
         super(totalElements, totalPages);
         this.postResponses = postResponses;
     }

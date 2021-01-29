@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class PostRequest {
 
     @NotNull
-    private String clubName;
+    private String host;
 
     @NotNull
     private String title;
@@ -24,7 +24,7 @@ public class PostRequest {
     private String description;
 
     @NotNull
-    private String date;
+    private String eventDate;
 
     private String link;
 
