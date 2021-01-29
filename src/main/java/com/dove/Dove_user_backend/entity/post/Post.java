@@ -23,7 +23,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "host", nullable = false, length = 45)
+    @Column(nullable = false, length = 45)
     private String host;
 
     @Column(nullable = false, length = 60)
