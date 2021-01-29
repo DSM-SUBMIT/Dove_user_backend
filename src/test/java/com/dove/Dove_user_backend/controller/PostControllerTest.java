@@ -19,9 +19,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -79,11 +79,11 @@ class PostControllerTest {
     @Test
     public void addPost() throws Exception {
         PostRequest request = PostRequest.builder()
-                .clubName("submit")
+                .host("submit")
                 .title("event")
                 .description("event description")
                 .writer("이승윤")
-                .date("2019-01-19")
+                .eventDate("2019-01-19")
                 .link("http://github.com/syxxn")
                 .build();
 
@@ -97,12 +97,13 @@ class PostControllerTest {
     private Integer postPost(Integer id) {
         return  postRepository.save(
                 Post.builder()
-                        .clubName("club"+id)
+                        .host("club"+id)
                         .title("event")
                         .description("event description")
                         .writer("이승윤")
                         .eventDate(LocalDate.parse("2019-01-19"))
                         .link("http://github.com/syxxn")
+                        .createAt(LocalDateTime.now())
                         .build()
         ).getId();
     }
