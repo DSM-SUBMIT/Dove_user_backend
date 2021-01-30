@@ -23,6 +23,7 @@ import java.time.ZoneId;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -74,6 +75,23 @@ class PostControllerTest {
 
         mvc.perform(get("/post/"+id))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void viewList() throws Exception {
+        addPost(2);
+        addPost(3);
+        addPost(4);
+        addPost(5);
+        addPost(6);
+        addPost(7);
+        addPost(8);
+        addPost(9);
+
+        mvc.perform(get("/")
+                .param("size","6")
+                .param("page","0"))
+                .andExpect(status().isOk()).andDo(print());
     }
 
     private Integer addPost(Integer id) {
