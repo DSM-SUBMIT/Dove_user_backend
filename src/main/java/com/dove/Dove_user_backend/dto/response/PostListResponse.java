@@ -6,11 +6,11 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-@Builder
 public class PostListResponse extends PageResponse{
 
-    List<PostResponse> postResponses;
+    private List<PostResponse> postResponses;
 
+    @Builder
     public PostListResponse(int totalElements, int totalPages, List<PostResponse> postResponses) {
         super(totalElements, totalPages);
         this.postResponses = postResponses;
