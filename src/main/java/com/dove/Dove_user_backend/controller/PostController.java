@@ -7,27 +7,29 @@ import com.dove.Dove_user_backend.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
+@RequestMapping("/user")
 @RestController
 public class PostController {
     
     private final PostService postService;
 
-    @PostMapping
+    @PostMapping("/post")
     @ResponseStatus(HttpStatus.CREATED)
-    void writePost(PostRequest postRequest) {
+    public void writePost(@RequestBody @Validated PostRequest postRequest) {
         postService.writePost(postRequest);
     }
 
     @GetMapping
-    PostListResponse viewList(Pageable page) {
+    public PostListResponse viewList(Pageable page) {
         return postService.viewList(page);
     }
 
-    @GetMapping("/{id}")
-    PostContentResponse viewPost(@PathVariable Integer id) {
+    @GetMapping("/post/{id}")
+    public PostContentResponse viewPost(@PathVariable Integer id) {
         return postService.viewPost(id);
     }
 

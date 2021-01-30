@@ -5,5 +5,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<Post, Integer> {
-    Page<Post> findAllByIdOrderByCreatedAtDesc(Pageable page);
+    Page<Post> findAllByOrderByCreatedAtDesc(Pageable page);
 }

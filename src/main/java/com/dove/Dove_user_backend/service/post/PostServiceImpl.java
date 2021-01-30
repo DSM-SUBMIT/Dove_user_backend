@@ -12,7 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +32,16 @@ public class PostServiceImpl implements PostService{
                         .writer(postRequest.getWriter())
                         .title(postRequest.getTitle())
                         .description(postRequest.getDescription())
-                        .eventDate(postRequest.getEventDate())
+                        .eventDate(LocalDate.parse(postRequest.getEventDate()))
                         .link(postRequest.getLink())
-                        .createdAt(LocalDateTime.now())
+                        .createdAt(LocalDateTime.now(ZoneId.of("Asia/Seoul")))
                         .build()
         );
     }
 
     @Override
     public PostListResponse viewList(Pageable page) {
-        Page<Post> postPage = postRepository.findAllByIdOrderByCreatedAtDesc(page);
+        Page<Post> postPage = postRepository.findAllByOrderByCreatedAtDesc(page);
         List<PostResponse> postResponses = new ArrayList<>();
 
         for(Post post : postPage) {

@@ -4,8 +4,6 @@ import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDate;
-
 @Getter
 @Builder
 public class PostRequest {
@@ -24,6 +22,6 @@ public class PostRequest {
     private String link;
 
     @NotNull
-    private LocalDate eventDate;
+    private String eventDate;
 
 }
