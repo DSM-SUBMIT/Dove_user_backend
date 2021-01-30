@@ -57,7 +57,7 @@ class PostControllerTest {
                 .link("link")
                 .build();
 
-        mvc.perform(post("/user/post")
+        mvc.perform(post("/post")
                 .content(new ObjectMapper()
                         .writeValueAsString(postRequest))
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
