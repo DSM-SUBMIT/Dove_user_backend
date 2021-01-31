@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @RequiredArgsConstructor
@@ -24,6 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                     .antMatchers(HttpMethod.GET, "/").permitAll()
                     .antMatchers(HttpMethod.GET, "/post/**").permitAll()
                     .antMatchers(HttpMethod.POST, "/post").permitAll();
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("*");
     }
 
 }
