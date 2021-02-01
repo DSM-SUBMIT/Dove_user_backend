@@ -67,9 +67,13 @@ public class PostServiceImpl implements PostService{
                 .orElseThrow(PostNotFoundException::new);
 
         return PostContentResponse.builder()
-                    .host(post.getHost())
-                    .writer(post.getWriter())
-                    .eventDate(post.getEventDate())
-                    .build();
+                .host(post.getHost())
+                .writer(post.getWriter())
+                .title(post.getTitle())
+                .description(post.getDescription())
+                .eventDate(post.getEventDate())
+                .link(post.getLink())
+                .createdAt(post.getCreatedAt())
+                .build();
     }
 }
