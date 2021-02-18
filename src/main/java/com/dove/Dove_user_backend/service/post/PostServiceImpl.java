@@ -26,7 +26,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public void writePost(PostRequest postRequest) {
-        postRepository.save(
+        /*postRepository.save(
                 Post.builder()
                         .host(postRequest.getHost())
                         .writer(postRequest.getWriter())
@@ -36,12 +36,12 @@ public class PostServiceImpl implements PostService{
                         .link(postRequest.getLink())
                         .createdAt(LocalDateTime.now(ZoneId.of("Asia/Seoul")))
                         .build()
-        );
+        );*/
     }
 
     @Override
     public PostListResponse viewList(Pageable page) {
-        Page<Post> postPage = postRepository.findAllByOrderByCreatedAtDesc(page);
+        /*Page<Post> postPage = postRepository.findAllByOrderByCreatedAtDesc(page);
         List<PostResponse> postResponses = new ArrayList<>();
 
         for(Post post : postPage) {
@@ -51,7 +51,6 @@ public class PostServiceImpl implements PostService{
                             .host(post.getHost())
                             .title(post.getTitle())
                             .eventDate(post.getEventDate())
-                            .createdAt(post.getCreatedAt())
                             .build()
             );
         }
@@ -60,12 +59,13 @@ public class PostServiceImpl implements PostService{
                     .totalElements((int)postPage.getTotalElements())
                     .totalPages(postPage.getTotalPages())
                     .postResponses(postResponses)
-                    .build();
+                    .build();*/
+        return null;
     }
 
     @Override
     public PostContentResponse viewPost(Integer id) {
-        Post post = postRepository.findById(id)
+        /*Post post = postRepository.findById(id)
                 .orElseThrow(PostNotFoundException::new);
 
         return PostContentResponse.builder()
@@ -76,6 +76,7 @@ public class PostServiceImpl implements PostService{
                 .eventDate(post.getEventDate())
                 .link(post.getLink())
                 .createdAt(post.getCreatedAt())
-                .build();
+                .build();*/
+        return null;
     }
 }
