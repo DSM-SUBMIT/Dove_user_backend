@@ -47,6 +47,7 @@ public class PostServiceImpl implements PostService{
         for(Post post : postPage) {
             postResponses.add(
                     PostResponse.builder()
+                            .id(post.getId())
                             .host(post.getHost())
                             .title(post.getTitle())
                             .eventDate(post.getEventDate())

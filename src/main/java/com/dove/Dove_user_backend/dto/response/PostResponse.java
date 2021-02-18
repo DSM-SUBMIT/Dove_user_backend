@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Builder
 public class PostResponse {
 
+    private Integer id;
+
     private String title;
 
     private String host;
