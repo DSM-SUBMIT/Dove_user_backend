@@ -51,6 +51,7 @@ public class PostServiceImpl implements PostService{
                             .host(post.getHost())
                             .title(post.getTitle())
                             .eventDate(post.getEventDate())
+                            .createdAt(post.getCreatedAt())
                             .build()
             );
         }
