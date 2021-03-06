@@ -40,7 +40,7 @@ public class Post {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime createdAt;
 
-    @Column(length = 45)
+    @Column(length = 45, nullable = false)
     private String adminId;
 
 }
