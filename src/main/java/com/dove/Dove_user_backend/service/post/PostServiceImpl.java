@@ -35,6 +35,7 @@ public class PostServiceImpl implements PostService{
                         .eventDate(LocalDate.parse(postRequest.getEventDate()))
                         .link(postRequest.getLink())
                         .createdAt(LocalDateTime.now(ZoneId.of("Asia/Seoul")))
+                        .adminId("not admin")
                         .build()
         );
     }

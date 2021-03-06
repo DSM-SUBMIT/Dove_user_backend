@@ -24,4 +24,6 @@ public class PostRequest {
     @NotNull
     private String eventDate;
 
+    private String adminId;
+
 }
